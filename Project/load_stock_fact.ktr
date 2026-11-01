@@ -715,7 +715,7 @@
       <key>symbol</key>
     </keys_1>
     <keys_2>
-      <key>STOCK_SYMBOL</key>
+      <key>INSTRUMENT_SYMBOL</key>
     </keys_2>
     <attributes/>
     <cluster_schema/>
@@ -916,7 +916,7 @@
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>STOCK_SYMBOL</name>
+        <name>INSTRUMENT_SYMBOL</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -968,16 +968,28 @@
     <return_field/>
     <fields>
       <field>
+        <column_name>PRICE_KEY</column_name>
+        <stream_name>price_key</stream_name>
+      </field>
+      <field>
+        <column_name>DATE_KEY</column_name>
+        <stream_name>DATE_KEY</stream_name>
+      </field>
+      <field>
+        <column_name>INSTRUMENT_KEY</column_name>
+        <stream_name>INSTRUMENT_KEY</stream_name>
+      </field>
+      <field>
         <column_name>OPEN_PRICE</column_name>
         <stream_name>open</stream_name>
       </field>
       <field>
-        <column_name>LOW_PRICE</column_name>
-        <stream_name>low</stream_name>
-      </field>
-      <field>
         <column_name>HIGH_PRICE</column_name>
         <stream_name>high</stream_name>
+      </field>
+      <field>
+        <column_name>LOW_PRICE</column_name>
+        <stream_name>low</stream_name>
       </field>
       <field>
         <column_name>CLOSE_PRICE</column_name>
@@ -986,18 +998,6 @@
       <field>
         <column_name>SHARE_VOLUME</column_name>
         <stream_name>volume</stream_name>
-      </field>
-      <field>
-        <column_name>DATE_KEY</column_name>
-        <stream_name>DATE_KEY</stream_name>
-      </field>
-      <field>
-        <column_name>STOCK_KEY</column_name>
-        <stream_name>STOCK_KEY</stream_name>
-      </field>
-      <field>
-        <column_name>PRICE_KEY</column_name>
-        <stream_name>price_key</stream_name>
       </field>
     </fields>
     <attributes/>
@@ -1287,7 +1287,7 @@
       <schema_name/>
     </partitioning>
     <connection>ProjectDB</connection>
-    <sql>SELECT * FROM stock_dim</sql>
+    <sql>SELECT * FROM instrument_dim</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1298,11 +1298,11 @@
       <value-meta>
         <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>STOCK_KEY</name>
+        <name>INSTRUMENT_KEY</name>
         <length>38</length>
         <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>STOCK_KEY</comments>
+        <origin>stock_dim</origin>
+        <comments>INSTRUMENT_KEY</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -1321,12 +1321,58 @@
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>STOCK_SYMBOL</name>
+        <name>INSTRUMENT_SYMBOL</name>
         <length>10</length>
         <precision>-1</precision>
-        <origin>Table input</origin>
-        <comments>STOCK_SYMBOL</comments>
+        <origin>stock_dim</origin>
+        <comments>INSTRUMENT_SYMBOL</comments>
         <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/New_York</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>INSTRUMENT_TYPE</name>
+        <length>10</length>
+        <precision>-1</precision>
+        <origin>stock_dim</origin>
+        <comments>INSTRUMENT_TYPE</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/New_York</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Number</type>
+        <storagetype>normal</storagetype>
+        <name>MATURITY_YEARS</name>
+        <length>4</length>
+        <precision>2</precision>
+        <origin>stock_dim</origin>
+        <comments>MATURITY_YEARS</comments>
+        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
