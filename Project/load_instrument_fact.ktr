@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>load_stock_fact</name>
+    <name>load_instrument_fact</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -527,7 +528,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>stock_dim</from>
+      <from>instrument_dim</from>
       <to>Sort rows 4</to>
       <enabled>Y</enabled>
     </hop>
@@ -1276,7 +1277,7 @@
     </GUI>
   </step>
   <step>
-    <name>stock_dim</name>
+    <name>instrument_dim</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
