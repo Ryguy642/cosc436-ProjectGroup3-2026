@@ -9,7 +9,7 @@ drop table date_dim;
 drop table instrument_dim;
 
 -- create sequences
-create sequence price_seq start with 1 increment by 1 cache 1000; -- add cache for better performance
+create sequence price_seq start with 1 increment by 1 cache 1000;
 create sequence date_seq start with 1 increment by 1 cache 1000;
 create sequence instrument_seq start with 1 increment by 1;
 
